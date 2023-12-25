@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>514</width>
-    <height>537</height>
+    <height>578</height>
    </rect>
   </property>
   <property name="font">
@@ -57,14 +57,14 @@
       <item>
        <widget class="QLabel" name="lb_path_to_file">
         <property name="text">
-         <string>Select  path to image:</string>
+         <string>Select path to icon:</string>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pb_select_img_path">
         <property name="text">
-         <string>Select image</string>
+         <string>Select icon</string>
         </property>
        </widget>
       </item>
@@ -91,7 +91,7 @@
       <item>
        <widget class="QLabel" name="lb_folder_path">
         <property name="text">
-         <string>Select folder to save the image:</string>
+         <string>Select folder to save the icon:</string>
         </property>
        </widget>
       </item>
@@ -148,18 +148,25 @@
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="gb_size_choice">
      <property name="title">
-      <string>Choose image size</string>
+      <string>Choose icon size</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
+       <widget class="QPushButton" name="pb_icon_sizes_avaibility">
+        <property name="text">
+         <string>Check availble icon sizes</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="hl_image_size">
         <item>
          <widget class="QLabel" name="lb_image_size">
           <property name="text">
-           <string>Image size:</string>
+           <string>Icon sizes:</string>
           </property>
          </widget>
         </item>
