@@ -13,27 +13,25 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
     sizes_dict = {
         '16px':16, '32px':32, '64px':64, '128px':128,'256px': 256,'512px': 512
         }
-    image_size = 0
     pathh, save_pathh = '', ''
     
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.cb_sizes.addItems([k for k in self.sizes_dict.keys()])
         self.pb_resize.clicked.connect(self.image_workout)
         self.pb_cancel.clicked.connect(self.close)
         self.pb_select_img_path.clicked.connect(self.path_to_file)
         self.pb_select_folder_path.clicked.connect(self.path_to_folder)
 
-    def image_open(self):
-        pass
+    def image_open(self, p):
+        with Image.open(p) as im:
+            self.image_size = im.size[0]
 
     
     def image_workout(self):
         image_name, num, image_extension = self.img_name_extension(self.pathh)
         
         with Image.open(self.pathh) as im:
-            self.image_size = im.size[0]
             curr_size = self.sizes_dict[self.cb_sizes.currentText()]
             img = im.resize((curr_size, curr_size), Image.Resampling.LANCZOS)
             img_name = image_name+f'_thumb.{image_extension}'
@@ -54,8 +52,16 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
     
     def path_to_file(self):
         file_path = qtw.QFileDialog.getOpenFileName()
+        
+        with Image.open(file_path[0]) as im:
+            self.cb_sizes.clear()
+            self.cb_sizes.addItems(
+                [k for k, v in self.sizes_dict.items() if v < im.size[0]]
+                )
+
         self.pathh = file_path[0]
         self.lb_selected_img_path.setText(file_path[0])
+
 
     def path_to_folder(self):
         folder_path = qtw.QFileDialog.getExistingDirectory()
@@ -72,11 +78,6 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
     
     def already_exists(self, p:str, file):
         return file in os.listdir(p)
-    
-    def check_icon_sizes(self):
-        self.cb_sizes.addItems(
-            [k for k, v in self.sizes_dict.items() if v < self.image_size]
-            )
 
         
 
