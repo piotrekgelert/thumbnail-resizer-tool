@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>514</width>
-    <height>578</height>
+    <height>544</height>
    </rect>
   </property>
   <property name="font">
@@ -34,12 +34,20 @@
        <property name="text">
         <string>Resize</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../App_icons/img_resource.qrc">
+         <normaloff>:/icons/scalability_thumb.png</normaloff>:/icons/scalability_thumb.png</iconset>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pb_cancel">
        <property name="text">
         <string>Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../App_icons/img_resource.qrc">
+         <normaloff>:/icons/cross_thumb.png</normaloff>:/icons/cross_thumb.png</iconset>
        </property>
       </widget>
      </item>
@@ -66,14 +74,41 @@
         <property name="text">
          <string>Select icon</string>
         </property>
+        <property name="icon">
+         <iconset resource="../../App_icons/img_resource.qrc">
+          <normaloff>:/icons/image_in_thumb.png</normaloff>:/icons/image_in_thumb.png</iconset>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="lb_selected_img_path">
-        <property name="text">
-         <string>Image path</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../App_icons/img_resource.qrc">:/icons/pointer_icon_thumb.png</pixmap>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_selected_img_path">
+          <property name="text">
+           <string>Image path</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <spacer name="verticalSpacer_2">
@@ -100,14 +135,38 @@
         <property name="text">
          <string>Select folder</string>
         </property>
+        <property name="icon">
+         <iconset resource="../../App_icons/img_resource.qrc">
+          <normaloff>:/icons/image_out_thumb.png</normaloff>:/icons/image_out_thumb.png</iconset>
+        </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="lb_selected_folder_path">
-        <property name="text">
-         <string>Folder path</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../App_icons/img_resource.qrc">:/icons/pointer_folder_thumb.png</pixmap>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lb_selected_folder_path">
+          <property name="text">
+           <string>Folder path</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -129,6 +188,9 @@
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Minimum</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -156,6 +218,22 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <layout class="QHBoxLayout" name="hl_image_size">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="pixmap">
+           <pixmap resource="../../App_icons/img_resource.qrc">:/icons/icon_sizes_thumb.png</pixmap>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QLabel" name="lb_image_size">
           <property name="text">

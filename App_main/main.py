@@ -18,16 +18,13 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.pb_resize.clicked.connect(self.image_workout)
+        self.pb_resize.clicked.connect(
+            lambda: [self.image_workout, self.on_resize_click]
+            )
         self.pb_cancel.clicked.connect(self.close)
         self.pb_select_img_path.clicked.connect(self.path_to_file)
         self.pb_select_folder_path.clicked.connect(self.path_to_folder)
-
-    def image_open(self, p):
-        with Image.open(p) as im:
-            self.image_size = im.size[0]
-
-    
+  
     def image_workout(self):
         image_name, num, image_extension = self.img_name_extension(self.pathh)
         
@@ -36,7 +33,7 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
             img = im.resize((curr_size, curr_size), Image.Resampling.LANCZOS)
             img_name = image_name+f'_thumb.{image_extension}'
             
-            if self.already_exists(self.save_pathh, img_name):
+            if img_name in os.listdir(self.save_pathh):
                 img.save(
                 os.path.join(
                     self.save_pathh,
@@ -51,6 +48,9 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
                     )
     
     def path_to_file(self):
+        self.lb_selected_img_path.clear()
+        self.lb_message.setText('')
+
         file_path = qtw.QFileDialog.getOpenFileName()
         
         with Image.open(file_path[0]) as im:
@@ -64,6 +64,8 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
 
 
     def path_to_folder(self):
+        self.lb_selected_folder_path.clear()
+        self.lb_message.setText('')
         folder_path = qtw.QFileDialog.getExistingDirectory()
         self.save_pathh = folder_path
         self.lb_selected_folder_path.setText(folder_path)
@@ -76,8 +78,8 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
         else:
             return img_name, 0, img_extension
     
-    def already_exists(self, p:str, file):
-        return file in os.listdir(p)
+    def on_resize_click(self):
+        self.lb_message.setText('Resize successful')
 
         
 
