@@ -18,13 +18,35 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.pb_resize.clicked.connect(
-            lambda: [self.image_workout, self.on_resize_click]
-            )
+        self.setup_icons()
+        self.pb_resize.clicked.connect(self.image_workout)
         self.pb_cancel.clicked.connect(self.close)
         self.pb_select_img_path.clicked.connect(self.path_to_file)
         self.pb_select_folder_path.clicked.connect(self.path_to_folder)
-  
+
+    def setup_icons(self):
+        root_folder = r''.format(pathlib.Path(__file__).parent.absolute().parent)
+        main_path = os.path.join(root_folder, 'App_icons')
+        self.setWindowIcon(
+            qtg.QIcon(
+                '{}\\{}'.format(main_path, 'content-management_thumb.png')))
+        self.pb_select_img_path.setIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'image_in_thumb.png')))
+        self.pb_select_folder_path.setIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'image_out_thumb.png')))
+        self.pb_resize.setIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'scalability_thumb.png')))
+        self.pb_cancel.setIcon(
+            qtg.QIcon('{}\\{}'.format(main_path, 'cross_thumb.png')))
+        self.lb_selected_img_path_image.setPixmap(
+            qtg.QPixmap('{}\\{}'.format(main_path, 'pointer_icon_thumb.png')))
+        self.lb_selected_folder_path_image.setPixmap(
+            qtg.QPixmap('{}\\{}'.format(main_path, 'pointer_folder_thumb.png')))
+        self.lb_image_size_image.setPixmap(
+            qtg.QPixmap('{}\\{}'.format(main_path, 'icon_sizes_thumb.png')))
+        self.lb_message_image.setPixmap(
+            qtg.QPixmap('{}\\{}'.format(main_path, 'mail_thumb.png')))
+    
     def image_workout(self):
         image_name, num, image_extension = self.img_name_extension(self.pathh)
         
@@ -40,12 +62,14 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
                     image_name+f'{num+1}_thumb.{image_extension}'
                     )
                 )
+                self.on_resize_click()
             else:
                 img.save(
                     os.path.join(
                         self.save_pathh, img_name
                         )
                     )
+                self.on_resize_click()
     
     def path_to_file(self):
         self.lb_selected_img_path.clear()
@@ -61,6 +85,7 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
 
         self.pathh = file_path[0]
         self.lb_selected_img_path.setText(file_path[0])
+        self.lb_message.setText('Path to icon added')
 
 
     def path_to_folder(self):
@@ -69,6 +94,7 @@ class ThumbResizer(qtw.QWidget, Ui_fm_main):
         folder_path = qtw.QFileDialog.getExistingDirectory()
         self.save_pathh = folder_path
         self.lb_selected_folder_path.setText(folder_path)
+        self.lb_message.setText('Path to folder added')
     
     def img_name_extension(self, p:str):
         img_name, img_extension = p.split('/')[-1].split('.')

@@ -3,6 +3,7 @@
     <file>content-management_thumb.png</file>
   </qresource>
   <qresource prefix="icons">
+    <file>mail_thumb.png</file>
     <file>cross_thumb.png</file>
     <file>icon_sizes_thumb.png</file>
     <file>scalability_thumb.png</file>
