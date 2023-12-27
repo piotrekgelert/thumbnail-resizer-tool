@@ -27,7 +27,8 @@ Tool to resize icon to its very small version made in Python 3.87 with PIL libra
 
 
 ### running the project
-App opens from `App_main/main.py` file
+App opens from `App_main/main.py` file or
+use main.exe
 
 
 ### licence
