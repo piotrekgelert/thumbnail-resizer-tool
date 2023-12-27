@@ -3,11 +3,11 @@ Tool to resize icon to its very small version made in Python 3.87 with PIL libra
 
 ## ui example:
 <p align="middle">
-  <img src="" width="800"/>
+  <img src="https://github.com/piotrekgelert/thumbnail-resizer-tool/blob/main/images/app_view.png" width="400"/>
 </p>
 
 ## notes:
-- [x] Checks if resized icon already exists, if yes adds to name number
+- [x] It checks if resized icon already exists, if yes adds to name number
 - [x] Name is taken from original icon and to resized icon name '_thumb' is added
 - [x] Saves files with original extention
 - [x] Sizes to select are: 16px, 32px, 64px, 128px, 256px, 512px
