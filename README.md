@@ -24,11 +24,11 @@ Tool to resize icon to its very small version made in Python 3.87 with PIL libra
 - [PIL 10.1.0](https://python-pillow.org/)
 - [PyQt6 6.6.1](https://www.riverbankcomputing.com/software/pyqt/)
 - [pyinstaller 6.3.0](https://www.pyinstaller.org/)
+- [auto-py-to-exe 2.42.0](https://github.com/brentvollebregt/auto-py-to-exe)
 
 
 ### running the project
-App opens from `App_main/main.py` file or
-use main.exe
+App opens from `App_main/main.py` file
 
 
 ### licence
